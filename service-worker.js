@@ -1,9 +1,9 @@
-const CACHE_NAME = "minha-lista-cache-v11";
+const CACHE_NAME = "minha-lista-cache-v12";
 
 const APP_SHELL = [
     "./",
     "./index.html",
-    "./static/css/style.css?v=5",
+    "./static/css/style.css?v=6",
     "./static/js/script.js?v=10",
     "./manifest.json?v=10",
     "./static/imagens/icon-192.svg",
@@ -47,18 +47,56 @@ self.addEventListener("activate", event => {
 // ==========================================
 
 self.addEventListener("fetch", event => {
+
     if (event.request.method !== "GET") {
         return;
     }
 
-    event.respondWith(
-        caches.match(event.request).then(cachedResponse => {
+    const request = event.request;
 
-            if (cachedResponse) {
-                return cachedResponse;
-            }
+    // ======================================
+    // NAVEGAÇÃO / HTML
+    // Busca primeiro na internet
+    // ======================================
 
-            return fetch(event.request)
+    if (request.mode === "navigate") {
+
+        event.respondWith(
+            fetch(request)
+                .then(response => {
+
+                    const responseCopy = response.clone();
+
+                    caches.open(CACHE_NAME).then(cache => {
+                        cache.put("./index.html", responseCopy);
+                    });
+
+                    return response;
+                })
+                .catch(() => {
+                    return caches.match("./index.html");
+                })
+        );
+
+        return;
+    }
+
+    // ======================================
+    // CSS / JS / MANIFEST
+    // NETWORK FIRST
+    // ======================================
+
+    const url = new URL(request.url);
+
+    const isImportantFile =
+        url.pathname.endsWith(".css") ||
+        url.pathname.endsWith(".js") ||
+        url.pathname.endsWith("manifest.json");
+
+    if (isImportantFile) {
+
+        event.respondWith(
+            fetch(request)
                 .then(response => {
 
                     if (!response || !response.ok) {
@@ -68,18 +106,47 @@ self.addEventListener("fetch", event => {
                     const responseCopy = response.clone();
 
                     caches.open(CACHE_NAME).then(cache => {
-                        cache.put(event.request, responseCopy);
+                        cache.put(request, responseCopy);
                     });
 
                     return response;
                 })
                 .catch(() => {
+                    return caches.match(request);
+                })
+        );
 
-                    // Se estiver offline e for navegação,
-                    // abre a página principal.
-                    if (event.request.mode === "navigate") {
-                        return caches.match("./index.html");
+        return;
+    }
+
+    // ======================================
+    // IMAGENS E OUTROS ARQUIVOS
+    // CACHE FIRST
+    // ======================================
+
+    event.respondWith(
+        caches.match(request).then(cachedResponse => {
+
+            if (cachedResponse) {
+                return cachedResponse;
+            }
+
+            return fetch(request)
+                .then(response => {
+
+                    if (!response || !response.ok) {
+                        return response;
                     }
+
+                    const responseCopy = response.clone();
+
+                    caches.open(CACHE_NAME).then(cache => {
+                        cache.put(request, responseCopy);
+                    });
+
+                    return response;
+                })
+                .catch(() => {
 
                     return new Response(
                         "Conteúdo indisponível offline.",

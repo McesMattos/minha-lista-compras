@@ -92,4 +92,13 @@ window.addEventListener("beforeinstallprompt", event => { event.preventDefault()
 document.getElementById("installButton").addEventListener("click", async () => { if (!deferredInstallPrompt) return; deferredInstallPrompt.prompt(); await deferredInstallPrompt.userChoice; deferredInstallPrompt = null; document.getElementById("installButton").classList.add("hidden"); });
 window.addEventListener("appinstalled", () => { document.getElementById("installButton").classList.add("hidden"); });
 setupGreeting(); setupCalculator(); render();
-if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("service-worker.js?v=10").catch(() => { }));
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker
+            .register("service-worker.js?v=11")
+            .then(registration => {
+                registration.update();
+            })
+            .catch(() => { });
+    });
+}

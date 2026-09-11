@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#177245">
+  <meta name="description" content="Uma lista de compras simples para acompanhar itens, quantidades e valores.">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Minha Lista">
+  <title>Minha Lista de Compras</title>
+  <link rel="manifest" href="manifest.json?v=10">
+  <link rel="icon" href="static/imagens/icon-192.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="static/imagens/icon-192.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/style.css?v=5">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">MINHA LISTA</p>
+        <h1>Minha Lista de Compras</h1>
+      </div>
+      <div class="topbar-actions">
+        <button class="install-button hidden" id="installButton" type="button">＋ Instalar</button>
+        <button class="icon-button" id="headerCalculator" type="button" aria-label="Abrir calculadora" title="Calculadora">⌗</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="welcome-section" aria-labelledby="greeting">
+        <div>
+          <p class="overline" id="currentDate"></p>
+          <h2 id="greeting">Bom dia! Vamos às compras?</h2>
+          <p class="welcome-copy">Organize seus itens e acompanhe o total em tempo real.</p>
+        </div>
+        <div class="progress-ring" id="progressRing" aria-label="Progresso da compra">
+          <strong id="progressValue">0%</strong>
+          <span>feito</span>
+        </div>
+      </section>
+
+      <section class="summary-strip" aria-label="Resumo da compra">
+        <div><span id="differentProducts">0</span><small>Produtos</small></div>
+        <div><span id="totalItems">0</span><small>Itens</small></div>
+        <div class="summary-total"><span id="summaryTotal">R$ 0,00</span><small>Total</small></div>
+      </section>
+
+      <div class="content-layout">
+        <section class="products-panel" id="productsSection" aria-labelledby="productsTitle">
+          <div class="section-heading">
+            <div>
+              <p class="overline">CATÁLOGO</p>
+              <h2 id="productsTitle">Escolha seus produtos</h2>
+            </div>
+            <button class="text-button" id="customProductButton" type="button">+ Adicionar produto</button>
+          </div>
+
+          <label class="search-box" for="productSearch">
+            <span aria-hidden="true">⌕</span>
+            <input id="productSearch" type="search" placeholder="Pesquisar produto..." autocomplete="off">
+            <kbd>/</kbd>
+          </label>
+
+          <div class="filter-row" id="categoryFilters" aria-label="Filtrar por categoria"></div>
+          <div class="catalog-toolbar">
+            <span id="catalogCount">0 produtos</span>
+            <select id="sortProducts" aria-label="Ordenar produtos">
+              <option value="default">Ordenação padrão</option>
+              <option value="name">Nome</option>
+              <option value="category">Categoria</option>
+              <option value="priceAsc">Menor preço</option>
+              <option value="priceDesc">Maior preço</option>
+            </select>
+          </div>
+          <div class="product-grid" id="productGrid"></div>
+          <div class="empty-state hidden" id="emptyCatalog">Nenhum produto encontrado. Tente outra busca ou adicione um produto personalizado.</div>
+        </section>
+
+        <aside class="shopping-panel" id="shoppingSection" aria-labelledby="shoppingTitle">
+          <div class="section-heading cart-heading">
+            <div>
+              <p class="overline">SUA SELEÇÃO</p>
+              <h2 id="shoppingTitle">Minha compra <span class="count-badge" id="cartCount">0</span></h2>
+            </div>
+            <button class="clear-button" id="clearListButton" type="button">Limpar</button>
+          </div>
+          <div class="cart-list" id="cartList"></div>
+          <div class="empty-cart" id="emptyCart">
+            <span class="empty-cart-icon">＋</span>
+            <strong>Sua lista está vazia</strong>
+            <p>Adicione produtos do catálogo para começar.</p>
+          </div>
+          <div class="cart-footer">
+            <div class="total-row"><span>Total da compra</span><strong id="cartTotal">R$ 0,00</strong></div>
+            <div class="save-status" id="saveStatus">Salvo neste dispositivo</div>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Navegação principal">
+      <button class="nav-item active" type="button" data-target="shoppingSection"><span>✓</span>Lista</button>
+      <button class="nav-item" type="button" data-target="productsSection"><span>▦</span>Produtos</button>
+      <button class="nav-item" id="bottomCalculator" type="button"><span>⌗</span>Calculadora</button>
+    </nav>
+  </div>
+
+  <dialog class="modal" id="customProductModal">
+    <form class="modal-card" id="customProductForm" method="dialog">
+      <button class="modal-close" type="button" data-close-modal aria-label="Fechar">×</button>
+      <p class="overline">NOVO ITEM</p>
+      <h2>Adicionar produto</h2>
+      <p class="modal-copy">Crie um item personalizado e ele já entra na sua compra.</p>
+      <label>Nome do produto<input name="name" required maxlength="48" placeholder="Ex.: Granola"></label>
+      <div class="camera-fields">
+        <label class="camera-field">Foto do produto<input id="productPhoto" name="productPhoto" type="file" accept="image/*" capture="environment"><span class="camera-button">⌾ Abrir câmera</span></label>
+        <label class="camera-field">Foto do preço<input id="pricePhoto" name="pricePhoto" type="file" accept="image/*" capture="environment"><span class="camera-button">⌾ Fotografar preço</span></label>
+      </div>
+      <div class="photo-previews hidden" id="photoPreviews"><img id="productPhotoPreview" alt="Prévia da foto do produto"><img id="pricePhotoPreview" alt="Prévia da foto do preço"></div>
+      <div class="form-grid">
+        <label>Qtd.<input name="quantity" type="number" min="1" step="1" value="1" inputmode="numeric" required></label>
+        <label>R$<input name="price" type="number" min="0" step="0.01" value="0" inputmode="decimal" required></label>
+      </div>
+      <label>Categoria<select name="category" id="customCategory"></select></label>
+      <button class="primary-button" type="submit">Adicionar à compra</button>
+    </form>
+  </dialog>
+
+  <dialog class="modal" id="calculatorModal">
+    <div class="modal-card calculator-card">
+      <button class="modal-close" type="button" data-close-modal aria-label="Fechar">×</button>
+      <p class="overline">FERRAMENTA RÁPIDA</p>
+      <h2>Calculadora</h2>
+      <div class="calculator-display" id="calculatorDisplay">0</div>
+      <div class="calculator-grid" id="calculatorKeys">
+        <button type="button" data-calc="clear" class="calc-muted">AC</button><button type="button" data-calc="backspace" class="calc-muted">⌫</button><button type="button" data-calc="operator" data-value="/" class="calc-operator">÷</button><button type="button" data-calc="operator" data-value="*" class="calc-operator">×</button>
+        <button type="button" data-calc="number" data-value="7">7</button><button type="button" data-calc="number" data-value="8">8</button><button type="button" data-calc="number" data-value="9">9</button><button type="button" data-calc="operator" data-value="-" class="calc-operator">−</button>
+        <button type="button" data-calc="number" data-value="4">4</button><button type="button" data-calc="number" data-value="5">5</button><button type="button" data-calc="number" data-value="6">6</button><button type="button" data-calc="operator" data-value="+" class="calc-operator">+</button>
+        <button type="button" data-calc="number" data-value="1">1</button><button type="button" data-calc="number" data-value="2">2</button><button type="button" data-calc="number" data-value="3">3</button><button type="button" data-calc="equals" class="calc-equals">=</button>
+        <button type="button" data-calc="number" data-value="0" class="calc-zero">0</button><button type="button" data-calc="number" data-value=".">.</button>
+      </div>
+    </div>
+  </dialog>
+  <script src="static/js/script.js?v=10"></script>
+</body>
+</html>

@@ -145,7 +145,22 @@
         <button type="button" data-calc="number" data-value="0" class="calc-zero">0</button><button type="button" data-calc="number" data-value=".">.</button>
       </div>
     </div>
-  </dialog>
-  <script src="static/js/script.js?v=10"></script>
+   </dialog>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.getRegistrations().then(registros => {
+        registros.forEach(registro => registro.unregister());
+      });
+    }
+
+    if ("caches" in window) {
+      caches.keys().then(nomes => {
+        nomes.forEach(nome => caches.delete(nome));
+      });
+    }
+  </script>
+
+  <script src="static/js/script.js?v=15"></script>
 </body>
 </html>

@@ -1,10 +1,10 @@
-const CACHE_NAME = "minha-lista-cache-v12";
+const CACHE_NAME = "minha-lista-cache-v13";
 
 const APP_SHELL = [
     "./",
     "./index.html",
     "./static/css/style.css?v=6",
-    "./static/js/script.js?v=10",
+    "./static/js/script.js?v=13",
     "./manifest.json?v=10",
     "./static/imagens/icon-192.svg",
     "./static/imagens/icon-512.svg"
@@ -47,7 +47,6 @@ self.addEventListener("activate", event => {
 // ==========================================
 
 self.addEventListener("fetch", event => {
-
     if (event.request.method !== "GET") {
         return;
     }
@@ -60,10 +59,12 @@ self.addEventListener("fetch", event => {
     // ======================================
 
     if (request.mode === "navigate") {
-
         event.respondWith(
             fetch(request)
                 .then(response => {
+                    if (!response || !response.ok) {
+                        return response;
+                    }
 
                     const responseCopy = response.clone();
 
@@ -83,7 +84,7 @@ self.addEventListener("fetch", event => {
 
     // ======================================
     // CSS / JS / MANIFEST
-    // NETWORK FIRST
+    // Busca primeiro na internet
     // ======================================
 
     const url = new URL(request.url);
@@ -94,11 +95,9 @@ self.addEventListener("fetch", event => {
         url.pathname.endsWith("manifest.json");
 
     if (isImportantFile) {
-
         event.respondWith(
             fetch(request)
                 .then(response => {
-
                     if (!response || !response.ok) {
                         return response;
                     }
@@ -126,14 +125,12 @@ self.addEventListener("fetch", event => {
 
     event.respondWith(
         caches.match(request).then(cachedResponse => {
-
             if (cachedResponse) {
                 return cachedResponse;
             }
 
             return fetch(request)
                 .then(response => {
-
                     if (!response || !response.ok) {
                         return response;
                     }
@@ -147,7 +144,6 @@ self.addEventListener("fetch", event => {
                     return response;
                 })
                 .catch(() => {
-
                     return new Response(
                         "Conteúdo indisponível offline.",
                         {

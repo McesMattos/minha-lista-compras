@@ -32,348 +32,146 @@ const categoryLabels = {
 
 const productsByCategory = {
     "Alimentos básicos": [
-        "Arroz",
-        "Arroz tipo 1",
-        "Feijão carioca",
-        "Feijão preto",
-        "Açúcar",
-        "Açúcar cristal",
-        "Açúcar mascavo",
-        "Sal",
-        "Café",
-        "Café solúvel",
-        "Café Pilão 500 g",
-        "Café Pilão extraforte 500 g",
-        "Café 3 Corações 500 g",
-        "Café Melitta 500 g",
-        "Farinha de trigo",
-        "Farinha integral",
-        "Farinha de mandioca",
-        "Farinha de milho",
-        "Farinha de aveia",
-        "Farinha de rosca",
-        "Fubá",
-        "Polvilho doce",
-        "Polvilho azedo",
-        "Tapioca",
-        "Aveia em flocos",
-        "Granola",
-        "Macarrão",
-        "Macarrão para lasanha",
-        "Óleo",
-        "Azeite",
-        "Vinagre",
-        "Molho de tomate",
-        "Extrato de tomate",
-        "Molho shoyu",
-        "Molho de pimenta",
-        "Milho",
-        "Ervilha",
-        "Azeitona",
-        "Lentilha",
-        "Grão de bico",
-        "Fermento químico",
-        "Fermento biológico seco",
-        "Fermento biológico fresco",
-        "Bicarbonato",
-        "Canela",
-        "Cravo",
-        "Pimenta-do-reino",
-        "Tempero completo",
-        "Caldo de carne",
-        "Caldo de galinha",
-        "Maionese",
-        "Ketchup",
-        "Mostarda",
-        "Geleia",
-        "Melaço",
-        "Nata",
-        "Amido de milho",
-        "Xarope",
-        "Leite de soja",
-        "Leite de amêndoas",
-        "Leite de coco",
-        "Adoçante",
-        "Mel",
-        "Geleia de mocotó",
-        "Papel manteiga"
+        "Arroz", "Arroz tipo 1", "Feijão carioca", "Feijão preto",
+        "Açúcar", "Açúcar cristal", "Açúcar mascavo", "Sal",
+        "Café", "Café solúvel", "Café Pilão 500 g",
+        "Café Pilão extraforte 500 g", "Café 3 Corações 500 g",
+        "Café Melitta 500 g", "Farinha de trigo", "Farinha integral",
+        "Farinha de mandioca", "Farinha de milho", "Farinha de aveia",
+        "Farinha de rosca", "Fubá", "Polvilho doce", "Polvilho azedo",
+        "Tapioca", "Aveia em flocos", "Granola", "Macarrão",
+        "Macarrão para lasanha", "Óleo", "Azeite", "Vinagre",
+        "Molho de tomate", "Extrato de tomate", "Molho shoyu",
+        "Molho de pimenta", "Milho", "Ervilha", "Azeitona",
+        "Lentilha", "Grão de bico", "Fermento químico",
+        "Fermento biológico seco", "Fermento biológico fresco",
+        "Bicarbonato", "Canela", "Cravo", "Pimenta-do-reino",
+        "Tempero completo", "Caldo de carne", "Caldo de galinha",
+        "Maionese", "Ketchup", "Mostarda", "Geleia", "Melaço",
+        "Nata", "Amido de milho", "Xarope", "Leite de soja",
+        "Leite de amêndoas", "Leite de coco", "Adoçante", "Mel",
+        "Geleia de mocotó", "Papel manteiga"
     ],
 
     "Carnes e proteínas": [
-        "Carne bovina",
-        "Carne moída",
-        "Frango inteiro",
-        "Peito de frango",
-        "Peixe",
-        "Tilápia",
-        "Linguiça",
-        "Salsicha",
-        "Presunto",
-        "Mortadela",
-        "Ovos",
-        "Bacon",
-        "Pernil",
-        "Toucinho",
-        "Patinho",
-        "Costela",
-        "Coração",
-        "Tofu",
-        "Sardinha",
-        "Atum"
+        "Carne bovina", "Carne moída", "Alcatra", "Acém",
+        "Contrafilé", "Costela bovina", "Coxão duro", "Coxão mole",
+        "Cupim", "Filé-mignon", "Fraldinha", "Lagarto",
+        "Músculo bovino", "Paleta bovina", "Patinho", "Picanha",
+
+        "Carne suína", "Carne suína moída", "Bisteca suína",
+        "Costelinha suína", "Lombo suíno", "Pernil suíno",
+        "Paleta suína", "Panceta", "Toucinho",
+
+        "Frango inteiro", "Peito de frango", "Frango a passarinho",
+        "Filé de peito de frango", "Filézinho sassami",
+        "Coxa de frango", "Sobrecoxa de frango", "Coxa e sobrecoxa",
+        "Asa de frango", "Coxinha da asa", "Meio da asa",
+        "Coração de frango", "Fígado de frango", "Moela de frango",
+
+        "Peixe", "Tilápia", "Filé de tilápia", "Salmão", "Merluza",
+        "Linguiça", "Linguiça calabresa", "Linguiça toscana",
+        "Salsicha", "Presunto", "Mortadela", "Ovos", "Bacon",
+        "Carne seca", "Tofu", "Sardinha", "Atum"
     ],
 
     "Leites e derivados": [
-        "Leite",
-        "Leite integral",
-        "Leite desnatado",
-        "Leite sem lactose",
-        "Leite em pó",
-        "Queijo",
-        "Queijo minas",
-        "Queijo muçarela",
-        "Requeijão",
-        "Manteiga",
-        "Margarina",
-        "Iogurte",
-        "Iogurte natural",
-        "Iogurte de frutas",
-        "Creme de leite",
-        "Leite condensado",
-        "Ricota",
-        "Coalhada",
-        "Yogurt",
-        "Cream cheese"
+        "Leite", "Leite integral", "Leite desnatado",
+        "Leite sem lactose", "Leite em pó", "Queijo",
+        "Queijo minas", "Queijo muçarela", "Requeijão",
+        "Manteiga", "Margarina", "Iogurte", "Iogurte natural",
+        "Iogurte de frutas", "Creme de leite", "Leite condensado",
+        "Ricota", "Coalhada", "Yogurt", "Cream cheese"
     ],
 
     "Padaria": [
-        "Pão francês",
-        "Pão de forma",
-        "Pão integral",
-        "Biscoito",
-        "Bolacha",
-        "Torrada",
-        "Bolo",
-        "Croissant",
-        "Cuca",
-        "Sonho",
-        "Rosca",
-        "Pão para hambúrguer",
-        "Pão de hot dog"
+        "Pão francês", "Pão de forma", "Pão integral", "Biscoito",
+        "Bolacha", "Torrada", "Bolo", "Croissant", "Cuca", "Sonho",
+        "Rosca", "Pão para hambúrguer", "Pão de hot dog"
     ],
 
     "Frutas": [
-        "Banana",
-        "Maçã",
-        "Laranja",
-        "Mamão",
-        "Melancia",
-        "Melão",
-        "Abacaxi",
-        "Manga",
-        "Uva",
-        "Limão",
-        "Morango",
-        "Pera",
-        "Kiwi",
-        "Coco",
-        "Acerola",
-        "Goiaba",
-        "Abacate",
-        "Pêssego",
-        "Maracujá",
-        "Jabuticaba",
-        "Caju"
+        "Banana", "Maçã", "Laranja", "Mamão", "Melancia", "Melão",
+        "Abacaxi", "Manga", "Uva", "Limão", "Morango", "Pera",
+        "Kiwi", "Coco", "Acerola", "Goiaba", "Abacate", "Pêssego",
+        "Maracujá", "Jabuticaba", "Caju"
     ],
 
     "Verduras e legumes": [
-        "Alface",
-        "Tomate",
-        "Cebola",
-        "Alho",
-        "Batata",
-        "Batata inglesa",
-        "Cenoura",
-        "Beterraba",
-        "Abobrinha",
-        "Pimentão",
-        "Repolho",
-        "Couve",
-        "Cheiro-verde",
-        "Pepino",
-        "Brócolis",
-        "Espinafre",
-        "Chuchu",
-        "Quiabo",
-        "Mandioca",
-        "Rúcula",
-        "Agrião",
-        "Pimentão vermelho",
-        "Berinjela",
-        "Salsinha",
-        "Coentro"
+        "Alface", "Tomate", "Cebola", "Alho", "Batata",
+        "Batata inglesa", "Cenoura", "Beterraba", "Abobrinha",
+        "Pimentão", "Repolho", "Couve", "Cheiro-verde", "Pepino",
+        "Brócolis", "Espinafre", "Chuchu", "Quiabo", "Mandioca",
+        "Rúcula", "Agrião", "Pimentão vermelho", "Berinjela",
+        "Salsinha", "Coentro"
     ],
 
     "Bebidas": [
-        "Água",
-        "Água mineral",
-        "Refrigerante",
-        "Refrigerante lata",
-        "Suco",
-        "Suco de laranja",
-        "Água de coco",
-        "Energético",
-        "Achocolatado",
-        "Chá",
-        "Isotônico",
-        "Cerveja",
-        "Vinho",
-        "Soda",
-        "Tônica"
+        "Água", "Água mineral", "Refrigerante", "Refrigerante lata",
+        "Suco", "Suco de laranja", "Água de coco", "Energético",
+        "Achocolatado", "Chá", "Isotônico", "Cerveja", "Vinho",
+        "Soda", "Tônica"
     ],
 
     "Produtos de limpeza": [
-        "Detergente",
-        "Detergente de louça",
-        "Sabão em pó",
-        "Sabão líquido",
-        "Amaciante",
-        "Água sanitária",
-        "Desinfetante",
-        "Álcool",
-        "Limpador multiuso",
-        "Esponja",
-        "Palha de aço",
-        "Saco de lixo",
-        "Papel toalha",
-        "Removedor",
-        "Cloro",
-        "Limpador de vidro",
-        "Limpador de banheiro",
-        "Alvejante",
-        "Limpa pisos"
+        "Detergente", "Detergente de louça", "Sabão em pó",
+        "Sabão líquido", "Amaciante", "Água sanitária",
+        "Desinfetante", "Álcool", "Limpador multiuso", "Esponja",
+        "Palha de aço", "Saco de lixo", "Papel toalha", "Removedor",
+        "Cloro", "Limpador de vidro", "Limpador de banheiro",
+        "Alvejante", "Limpa pisos"
     ],
 
     "Higiene pessoal": [
-        "Papel higiênico",
-        "Sabonete",
-        "Sabonete líquido",
-        "Shampoo",
-        "Condicionador",
-        "Creme dental",
-        "Escova de dentes",
-        "Fio dental",
-        "Desodorante",
-        "Absorvente",
-        "Aparelho de barbear",
-        "Algodão",
-        "Cotonete",
-        "Pomada",
-        "Sabonete íntimo",
-        "Hidratante",
-        "Pente",
-        "Talco",
-        "Óleo corporal",
-        "Perfume"
+        "Papel higiênico", "Sabonete", "Sabonete líquido", "Shampoo",
+        "Condicionador", "Creme dental", "Escova de dentes",
+        "Fio dental", "Desodorante", "Absorvente",
+        "Aparelho de barbear", "Algodão", "Cotonete", "Pomada",
+        "Sabonete íntimo", "Hidratante", "Pente", "Talco",
+        "Óleo corporal", "Perfume"
     ],
 
     "Cuidados domésticos": [
-        "Guardanapo",
-        "Papel alumínio",
-        "Filme plástico",
-        "Fósforo",
-        "Vela",
-        "Pilhas",
-        "Inseticida",
-        "Esparadrapo",
-        "Fita isolante",
-        "Palitos",
-        "Balde",
-        "Escova de vaso",
-        "Lâmpada",
-        "Pano de chão",
-        "Vassoura",
-        "Saco para lixo",
-        "Pano microfibra"
+        "Guardanapo", "Papel alumínio", "Filme plástico", "Fósforo",
+        "Vela", "Pilhas", "Inseticida", "Esparadrapo", "Fita isolante",
+        "Palitos", "Balde", "Escova de vaso", "Lâmpada",
+        "Pano de chão", "Vassoura", "Saco para lixo", "Pano microfibra"
     ],
 
     "Congelados": [
-        "Pizza",
-        "Hambúrguer",
-        "Nuggets",
-        "Batata congelada",
-        "Lasanha",
-        "Pão de queijo",
-        "Carne moída congelada",
-        "Frango empanado",
-        "Legumes congelados",
-        "Sopa congelada",
-        "Sorvete",
-        "Polpa de fruta",
-        "Açaí",
-        "Pizza de calabresa"
+        "Pizza", "Hambúrguer", "Nuggets", "Batata congelada",
+        "Lasanha", "Pão de queijo", "Carne moída congelada",
+        "Legumes congelados", "Sopa congelada", "Sorvete",
+        "Polpa de fruta", "Açaí", "Pizza de calabresa"
     ],
 
     "Doces e sobremesas": [
-        "Chocolate ao leite",
-        "Chocolate branco",
-        "Chocolate meio amargo",
-        "Chocolate 50% cacau",
-        "Chocolate 70% cacau",
-        "Chocolate 75% cacau",
-        "Chocolate 85% cacau",
-        "Chocolate 100% cacau",
-        "Chocolate em pó 50% cacau",
-        "Chocolate em pó 100% cacau",
-        "Cacau em pó",
-        "Bombom",
-        "Gelatina",
-        "Doce de leite",
-        "Goiabada",
-        "Biscoito recheado",
-        "Wafer",
-        "Paçoca",
-        "Granulado",
-        "Leite em pó para confeitaria",
-        "Cookie",
-        "Pudim",
-        "Bala",
-        "Pirulito",
-        "Marshmallow"
+        "Chocolate ao leite", "Chocolate branco",
+        "Chocolate meio amargo", "Chocolate 50% cacau",
+        "Chocolate 70% cacau", "Chocolate 75% cacau",
+        "Chocolate 85% cacau", "Chocolate 100% cacau",
+        "Chocolate em pó 50% cacau", "Chocolate em pó 100% cacau",
+        "Cacau em pó", "Bombom", "Gelatina", "Doce de leite",
+        "Goiabada", "Biscoito recheado", "Wafer", "Paçoca",
+        "Granulado", "Leite em pó para confeitaria", "Cookie",
+        "Pudim", "Bala", "Pirulito", "Marshmallow"
     ],
 
     "Pet": [
-        "Ração seca para cães",
-        "Ração seca para gatos",
-        "Ração úmida para cães",
-        "Ração úmida para gatos",
-        "Sachê para cães",
-        "Sachê para gatos",
-        "Patê para cães",
-        "Patê para gatos",
-        "Petisco para cães",
-        "Petisco para gatos",
-        "Areia sanitária para gatos",
-        "Tapete higiênico",
-        "Coleira",
-        "Brinquedo para cães",
-        "Brinquedo para gatos",
-        "Shampoo para cães",
-        "Shampoo para gatos"
+        "Ração seca para cães", "Ração seca para gatos",
+        "Ração úmida para cães", "Ração úmida para gatos",
+        "Sachê para cães", "Sachê para gatos", "Patê para cães",
+        "Patê para gatos", "Petisco para cães", "Petisco para gatos",
+        "Areia sanitária para gatos", "Tapete higiênico", "Coleira",
+        "Brinquedo para cães", "Brinquedo para gatos",
+        "Shampoo para cães", "Shampoo para gatos"
     ],
 
     "Bebê": [
-        "Fralda",
-        "Lenço umedecido",
-        "Shampoo infantil",
-        "Sabonete infantil",
-        "Papinha",
-        "Fórmula infantil",
-        "Creme para assaduras",
-        "Pomada para bebê",
-        "Mamadeira",
-        "Chupeta",
-        "Fraldas descartáveis",
-        "Lenços de bebê"
+        "Fralda", "Lenço umedecido", "Shampoo infantil",
+        "Sabonete infantil", "Papinha", "Fórmula infantil",
+        "Creme para assaduras", "Pomada para bebê", "Mamadeira",
+        "Chupeta", "Fraldas descartáveis", "Lenços de bebê"
     ]
 };
 
@@ -410,9 +208,26 @@ const productVisuals = {
     "Ovos": "🥚",
     "Carne bovina": "🥩",
     "Carne moída": "🥩",
+    "Alcatra": "🥩",
+    "Acém": "🥩",
+    "Contrafilé": "🥩",
+    "Costela bovina": "🥩",
+    "Picanha": "🥩",
+    "Carne suína": "🥩",
+    "Costelinha suína": "🥩",
     "Frango inteiro": "🍗",
     "Peito de frango": "🍗",
+    "Frango a passarinho": "🍗",
+    "Filé de peito de frango": "🍗",
+    "Filézinho sassami": "🍗",
+    "Coxa de frango": "🍗",
+    "Sobrecoxa de frango": "🍗",
+    "Coxinha da asa": "🍗",
     "Peixe": "🐟",
+    "Tilápia": "🐟",
+    "Filé de tilápia": "🐟",
+    "Salmão": "🐟",
+    "Merluza": "🐟",
     "Banana": "🍌",
     "Maçã": "🍎",
     "Laranja": "🍊",
@@ -685,18 +500,20 @@ function renderCatalog() {
     }
 
     if (sort === "priceAsc") {
-        products.sort(
-            (a, b) => a.price - b.price
+        products.sort((a, b) =>
+            a.price - b.price
         );
     }
 
     if (sort === "priceDesc") {
-        products.sort(
-            (a, b) => b.price - a.price
+        products.sort((a, b) =>
+            b.price - a.price
         );
     }
 
-    document.getElementById("catalogCount").textContent =
+    document.getElementById(
+        "catalogCount"
+    ).textContent =
         `${products.length} produto${products.length === 1 ? "" : "s"
         }`;
 
@@ -707,7 +524,9 @@ function renderCatalog() {
             products.length > 0
         );
 
-    document.getElementById("productGrid").innerHTML =
+    document.getElementById(
+        "productGrid"
+    ).innerHTML =
         products.map(productCard).join("");
 }
 
@@ -826,8 +645,9 @@ function renderCart() {
         }))
         .filter(entry => entry.product);
 
-    document.getElementById("cartCount").textContent =
-        entries.length;
+    document.getElementById(
+        "cartCount"
+    ).textContent = entries.length;
 
     document
         .getElementById("emptyCart")
@@ -836,7 +656,9 @@ function renderCart() {
             entries.length > 0
         );
 
-    document.getElementById("cartList").innerHTML =
+    document.getElementById(
+        "cartList"
+    ).innerHTML =
         entries.map(cartCard).join("");
 }
 
@@ -944,9 +766,12 @@ function updateSummary() {
 
     document.getElementById(
         "totalItems"
-    ).textContent = Number.isInteger(totalItems)
+    ).textContent =
+        Number.isInteger(totalItems)
             ? totalItems
-            : totalItems.toFixed(2).replace(".", ",");
+            : totalItems
+                .toFixed(2)
+                .replace(".", ",");
 
     document.getElementById(
         "summaryTotal"
@@ -1082,7 +907,9 @@ function setupCalculator() {
                 }
 
                 calculator.value =
-                    String(Number(result.toFixed(8)));
+                    String(
+                        Number(result.toFixed(8))
+                    );
 
                 calculator.previous = null;
                 calculator.operator = null;
@@ -1423,10 +1250,15 @@ document
 
             const product = {
                 id: `custom-${Date.now()}`,
-                name: form.get("name").trim(),
-                category: form.get("category"),
+                name: form
+                    .get("name")
+                    .trim(),
+                category:
+                    form.get("category"),
                 price:
-                    Number(form.get("price")) || 0,
+                    Number(
+                        form.get("price")
+                    ) || 0,
                 image: productImage,
                 priceImage,
                 custom: true

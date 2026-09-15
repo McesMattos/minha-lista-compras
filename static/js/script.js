@@ -1362,6 +1362,50 @@ window.addEventListener(
     }
 );
 
+const shareButton =
+    document.getElementById("shareButton");
+
+if (shareButton) {
+    shareButton.addEventListener(
+        "click",
+        async () => {
+            const shareData = {
+                title: "Minha Lista de Compras",
+                text:
+                    "Conheça o Minha Lista de Compras! " +
+                    "Organize seus produtos e acompanhe " +
+                    "o valor da compra em tempo real.",
+                url:
+                    window.location.origin +
+                    window.location.pathname
+            };
+
+            try {
+                if (navigator.share) {
+                    await navigator.share(shareData);
+                    return;
+                }
+
+                await navigator.clipboard.writeText(
+                    shareData.url
+                );
+
+                alert(
+                    "Link copiado! Agora você pode " +
+                    "enviá-lo para quem quiser."
+                );
+            } catch (error) {
+                if (error.name !== "AbortError") {
+                    prompt(
+                        "Copie o link para compartilhar:",
+                        shareData.url
+                    );
+                }
+            }
+        }
+    );
+}
+
 setupGreeting();
 setupCalculator();
 render();

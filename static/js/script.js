@@ -9,6 +9,10 @@ const categories = [
     "Frutas",
     "Verduras e legumes",
     "Bebidas",
+    "Cervejas",
+    "Biscoitos tradicionais",
+    "Biscoitos recheados",
+    "Snacks",
     "Produtos de limpeza",
     "Higiene pessoal",
     "Cuidados domésticos",
@@ -110,7 +114,67 @@ const productsByCategory = {
         "Água", "Água mineral", "Refrigerante", "Refrigerante lata",
         "Suco", "Suco de laranja", "Água de coco", "Energético",
         "Achocolatado", "Chá", "Isotônico", "Cerveja", "Vinho",
-        "Soda", "Tônica"
+        "Soda", "Tônica",
+        "Coca-Cola 220 ml", "Coca-Cola 350 ml", "Coca-Cola 600 ml",
+        "Coca-Cola 1 litro", "Coca-Cola 1,5 litro", "Coca-Cola 2 litros",
+        "Pepsi 350 ml", "Pepsi 600 ml", "Pepsi 1 litro",
+        "Pepsi 1,5 litro", "Pepsi 2 litros",
+        "Guaraná Antarctica 350 ml", "Guaraná Antarctica 600 ml",
+        "Guaraná Antarctica 1 litro", "Guaraná Antarctica 2 litros",
+        "Fanta Laranja 350 ml", "Fanta Laranja 600 ml",
+        "Fanta Laranja 2 litros", "Fanta Uva 350 ml",
+        "Fanta Uva 2 litros", "Sprite 350 ml", "Sprite 600 ml",
+        "Sprite 2 litros", "Suco de uva 1 litro",
+        "Suco de laranja 1 litro", "Suco de maçã 1 litro",
+        "Néctar de frutas 1 litro", "Água mineral 330 ml",
+        "Água mineral 500 ml", "Água mineral 1,5 litro",
+        "Água mineral 5 litros", "Água com gás 500 ml",
+        "Água com gás 1,5 litro", "Energético 250 ml",
+        "Energético 473 ml", "Isotônico 500 ml"
+    ],
+
+    "Cervejas": [
+        "Brahma 269 ml", "Brahma 350 ml", "Brahma 600 ml",
+        "Brahma 1 litro", "Skol 269 ml", "Skol 350 ml",
+        "Skol 600 ml", "Skol 1 litro", "Antarctica 269 ml",
+        "Antarctica 350 ml", "Antarctica 600 ml", "Antarctica 1 litro",
+        "Amstel 269 ml", "Amstel 350 ml", "Amstel 330 ml",
+        "Amstel 600 ml", "Heineken 269 ml", "Heineken 350 ml",
+        "Heineken 330 ml", "Heineken 600 ml", "Budweiser 269 ml",
+        "Budweiser 350 ml", "Budweiser 330 ml", "Budweiser 600 ml",
+        "Spaten 269 ml", "Spaten 350 ml", "Spaten 330 ml",
+        "Spaten 600 ml", "Itaipava 269 ml", "Itaipava 350 ml",
+        "Itaipava 600 ml", "Itaipava 1 litro", "Original 269 ml",
+        "Original 350 ml", "Original 600 ml", "Stella Artois 269 ml",
+        "Stella Artois 330 ml", "Stella Artois 600 ml"
+    ],
+
+    "Biscoitos tradicionais": [
+        "Biscoito Cream Cracker", "Biscoito Água e Sal",
+        "Biscoito Maisena", "Biscoito Maria", "Biscoito de Leite",
+        "Biscoito de Coco", "Biscoito Integral"
+    ],
+
+    "Biscoitos recheados": [
+        "Bauducco recheado chocolate", "Bauducco recheado morango",
+        "Bauducco recheado baunilha", "Passatempo chocolate",
+        "Passatempo morango", "Passatempo baunilha",
+        "Marilan recheado chocolate", "Marilan recheado morango",
+        "Marilan recheado baunilha", "Oreo chocolate",
+        "Oreo morango", "Oreo baunilha", "Bono chocolate",
+        "Bono morango", "Bono doce de leite",
+        "Negresco chocolate", "Negresco morango",
+        "Trakinas chocolate", "Trakinas morango",
+        "Trakinas baunilha"
+    ],
+
+    "Snacks": [
+        "Salgadinho de milho", "Batata chips", "Batata ondulada",
+        "Pipoca para micro-ondas", "Pipoca pronta", "Amendoim torrado",
+        "Amendoim japonês", "Chocolate em barra", "Bombom sortido",
+        "Bala de fruta", "Bala de goma", "Chiclete",
+        "Wafer de chocolate", "Wafer de morango",
+        "Goma de mascar"
     ],
 
     "Produtos de limpeza": [
@@ -154,7 +218,9 @@ const productsByCategory = {
         "Cacau em pó", "Bombom", "Gelatina", "Doce de leite",
         "Goiabada", "Biscoito recheado", "Wafer", "Paçoca",
         "Granulado", "Leite em pó para confeitaria", "Cookie",
-        "Pudim", "Bala", "Pirulito", "Marshmallow"
+        "Pudim", "Bala", "Pirulito", "Marshmallow",
+        "Chocolate", "Salgadinho",
+        "Pipoca", "Amendoim"
     ],
 
     "Pet": [
@@ -183,6 +249,10 @@ const icons = {
     "Frutas": "✦",
     "Verduras e legumes": "✿",
     "Bebidas": "◒",
+    "Cervejas": "◒",
+    "Biscoitos tradicionais": "◇",
+    "Biscoitos recheados": "◇",
+    "Snacks": "●",
     "Produtos de limpeza": "✧",
     "Higiene pessoal": "✺",
     "Cuidados domésticos": "□",
@@ -283,38 +353,17 @@ function slug(value) {
         .replace(/[^a-z0-9]+/g, "-");
 }
 
-function defaultPrice(category, index) {
-    const ranges = {
-        "Alimentos básicos": [4, 26],
-        "Carnes e proteínas": [8, 42],
-        "Leites e derivados": [4, 18],
-        "Padaria": [3, 14],
-        "Frutas": [2, 10],
-        "Verduras e legumes": [2, 12],
-        "Bebidas": [3, 15],
-        "Produtos de limpeza": [4, 22],
-        "Higiene pessoal": [3, 24],
-        "Cuidados domésticos": [3, 18],
-        "Congelados": [8, 25],
-        "Doces e sobremesas": [4, 18],
-        "Pet": [7, 60],
-        "Bebê": [8, 35]
-    };
-
-    const [min, max] = ranges[category] || [5, 20];
-
-    return Math.round(
-        (min + (index * 3.17) % (max - min)) * 100
-    ) / 100;
-}
-
 const catalog = Object.entries(productsByCategory).flatMap(
     ([category, names]) =>
-        names.map((name, index) => ({
+        names.map(name => ({
             id: slug(name),
             name,
             category,
-            price: defaultPrice(category, index)
+            barcode: "",
+            cost: 0,
+            price: 0,
+            stock: 0,
+            unit: "un"
         }))
 );
 
@@ -591,7 +640,7 @@ function productCard(product) {
                         type="number"
                         min="0"
                         step="0.01"
-                        value="${item?.price ?? product.price}"
+                        value="${item?.price ?? (product.price || "")}"
                         inputmode="decimal"
                         aria-label="Valor unitário de ${product.name}"
                     >
@@ -1131,7 +1180,9 @@ document
 
 function compressPhoto(file) {
     return new Promise(resolve => {
-        if (!file) {
+        // Campos de foto são opcionais. Um input file vazio retorna
+        // um objeto File com size 0, que também precisa ser ignorado.
+        if (!file || !file.size) {
             resolve("");
             return;
         }
@@ -1142,30 +1193,25 @@ function compressPhoto(file) {
             const image = new Image();
 
             image.onload = () => {
-                const canvas =
-                    document.createElement("canvas");
+                try {
+                    const canvas = document.createElement("canvas");
 
-                const scale = Math.min(
-                    1,
-                    720 / Math.max(
-                        image.width,
-                        image.height
-                    )
-                );
-
-                canvas.width =
-                    Math.round(
-                        image.width * scale
+                    const scale = Math.min(
+                        1,
+                        720 / Math.max(image.width, image.height)
                     );
 
-                canvas.height =
-                    Math.round(
-                        image.height * scale
-                    );
+                    canvas.width = Math.max(1, Math.round(image.width * scale));
+                    canvas.height = Math.max(1, Math.round(image.height * scale));
 
-                canvas
-                    .getContext("2d")
-                    .drawImage(
+                    const context = canvas.getContext("2d");
+
+                    if (!context) {
+                        resolve("");
+                        return;
+                    }
+
+                    context.drawImage(
                         image,
                         0,
                         0,
@@ -1173,15 +1219,24 @@ function compressPhoto(file) {
                         canvas.height
                     );
 
-                resolve(
-                    canvas.toDataURL(
-                        "image/jpeg",
-                        0.78
-                    )
-                );
+                    resolve(canvas.toDataURL("image/jpeg", 0.78));
+                } catch (error) {
+                    console.error("Não foi possível processar a foto:", error);
+                    resolve("");
+                }
+            };
+
+            image.onerror = () => {
+                console.warn("A imagem selecionada não pôde ser carregada.");
+                resolve("");
             };
 
             image.src = reader.result;
+        };
+
+        reader.onerror = () => {
+            console.warn("Não foi possível ler o arquivo de imagem.");
+            resolve("");
         };
 
         reader.readAsDataURL(file);
@@ -1255,10 +1310,21 @@ document
                     .trim(),
                 category:
                     form.get("category"),
+                barcode:
+                    form.get("barcode").trim(),
+                cost:
+                    Number(form.get("cost")) || 0,
                 price:
                     Number(
                         form.get("price")
                     ) || 0,
+                stock:
+                    Math.max(
+                        0,
+                        Number(form.get("stock")) || 0
+                    ),
+                unit:
+                    form.get("unit"),
                 image: productImage,
                 priceImage,
                 custom: true
@@ -1413,7 +1479,7 @@ render();
 if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
         navigator.serviceWorker
-            .register("service-worker.js?v=13")
+            .register("service-worker.js?v=14")
             .then(registration => {
                 registration.update();
             })

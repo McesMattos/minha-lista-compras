@@ -1,10 +1,10 @@
-const CACHE_NAME = "minha-lista-cache-v13";
+const CACHE_NAME = "minha-lista-cache-v14";
 
 const APP_SHELL = [
     "./",
     "./index.html",
     "./static/css/style.css?v=6",
-    "./static/js/script.js?v=13",
+    "./static/js/script.js?v=17",
     "./manifest.json?v=10",
     "./static/imagens/icon-192.svg",
     "./static/imagens/icon-512.svg"

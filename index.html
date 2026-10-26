@@ -567,7 +567,7 @@
       <div class="form-grid">
 
         <label>
-          Qtd.
+          Qtd. na compra
 
           <input
             name="quantity"
@@ -581,10 +581,52 @@
         </label>
 
         <label>
-          R$
+          Preço de venda (R$)
 
           <input
             name="price"
+            type="number"
+            min="0"
+            step="0.01"
+            placeholder="0,00"
+            inputmode="decimal"
+          >
+        </label>
+
+      </div>
+
+      <div class="form-grid">
+
+        <label>
+          Código de barras
+
+          <input
+            name="barcode"
+            type="text"
+            inputmode="numeric"
+            autocomplete="off"
+            placeholder="Preencha se disponível"
+          >
+        </label>
+
+        <label>
+          Preço de custo (R$)
+
+          <input
+            name="cost"
+            type="number"
+            min="0"
+            step="0.01"
+            placeholder="0,00"
+            inputmode="decimal"
+          >
+        </label>
+
+        <label>
+          Estoque
+
+          <input
+            name="stock"
             type="number"
             min="0"
             step="0.01"
@@ -592,6 +634,21 @@
             inputmode="decimal"
             required
           >
+        </label>
+
+        <label>
+          Unidade de medida
+
+          <select name="unit" required>
+            <option value="un">Unidade (un)</option>
+            <option value="kg">Quilograma (kg)</option>
+            <option value="g">Grama (g)</option>
+            <option value="l">Litro (L)</option>
+            <option value="ml">Mililitro (ml)</option>
+            <option value="pacote">Pacote</option>
+            <option value="caixa">Caixa</option>
+            <option value="fardo">Fardo</option>
+          </select>
         </label>
 
       </div>
@@ -811,7 +868,7 @@
 
   </dialog>
 
-  <script src="static/js/script.js?v=16"></script>
+  <script src="static/js/script.js?v=17"></script>
 
 </body>
 </html>
